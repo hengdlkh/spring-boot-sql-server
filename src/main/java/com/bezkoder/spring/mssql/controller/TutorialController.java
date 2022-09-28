@@ -34,10 +34,11 @@ public class TutorialController {
 		try {
 			List<Tutorial> tutorials = new ArrayList<Tutorial>();
 
-			if (title == null)
+			if (title == null){
 				tutorialRepository.findAll().forEach(tutorials::add);
-			else
+			}else{
 				tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
+			}
 
 			if (tutorials.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
